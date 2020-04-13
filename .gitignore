@@ -3,6 +3,7 @@
 
 # VS Code files
 c_cpp_properties.json
+arduino.json
 
 #IoT Hub Info
 azureconfig.json
