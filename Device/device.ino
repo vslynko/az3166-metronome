@@ -65,5 +65,10 @@ void loop()
     Screen.draw(0, 2, 42, 8, zero);
     Screen.draw(43, 2, 85, 8, one);
     Screen.draw(86, 2, 128, 8, two);
+
+    delay(2000);
+
+    Screen.draw(0,2,42,8, three);
+    delay(2000);
   }
 }
