@@ -30,71 +30,41 @@ void screenSwitch()
 
 void loop()
 {
+  inputValue = analogRead(senserPin);
+
+  if (inputValue > 600)
+  {
+    rgbLed.setColor(150, 0, 0);
+    if (!aboveThreshold)
+    {
+      counter++;
+      aboveThreshold = true;
+    }
+  }
+  else
+  {
+    rgbLed.setColor(0, 0, 150);
+    aboveThreshold = false;
+  }
+
   if (buttonAswitch)
   {
     Screen.print("Analog Value:", false);
 
-    inputValue = analogRead(senserPin);
     char buf[10];
     sprintf(buf, "%d", inputValue);
     Screen.print(1, buf);
 
     Screen.print(2, "Counter:", false);
 
-    if (inputValue > 600)
-    {
-      rgbLed.setColor(150, 0, 0);
-      if (!aboveThreshold)
-      {
-        counter++;
-        aboveThreshold = true;
-      }
-    }
-    else
-    {
-      rgbLed.setColor(0, 0, 150);
-      aboveThreshold = false;
-    }
     char buf1[10];
     sprintf(buf1, "%d", counter);
     Screen.print(3, buf1, false);
   }
   else
   {
-    // Screen.draw(0,2,42,8, six);
-    // Screen.draw(43, 2, 85, 8, seven);
-    // Screen.draw(86, 2, 128, 8, nine);
+    Screen.print("Bar Counter");
 
-    PrintFullScreen(123);
-    delay(2000);
-    PrintFullScreen(24);
-    delay(2000);
-    PrintFullScreen(5);
-    delay(2000);
-    PrintFullScreen(530);
-    delay(2000);
-    PrintFullScreen(508);
-    delay(2000);
-    PrintFullScreen(678);
-    delay(2000);
-    PrintFullScreen(1000);
-    delay(2000);
-    PrintFullScreen(999);
-    delay(2000);
-
-    // delay(2000);
-
-    // Screen.print("Bar Count", false);
-    // Screen.draw(0, 2, 42, 8, zero);
-    // Screen.draw(43, 2, 85, 8, one);
-    // Screen.draw(86, 2, 128, 8, two);
-
-    // delay(2000);
-
-    // Screen.draw(0,2,42,8, three);
-    // Screen.draw(43, 2, 85, 8, four);
-    // Screen.draw(86, 2, 128, 8, five);
-
-    // delay(2000);
+    PrintFullScreen(counter);
   }
 }
