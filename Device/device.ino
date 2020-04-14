@@ -1,4 +1,5 @@
 #include "RGB_LED.h"
+#include "digits.h"
 
 static RGB_LED rgbLed;
 
@@ -64,15 +65,15 @@ void loop()
 
     Screen.clean();
     Screen.print("Bar Count", false);
-    Screen.draw(0, 2, 42, 8, testBmp);
+    Screen.draw(0, 2, 42, 8, one);
     delay(2000);
     Screen.clean();
     Screen.print("Bar Count", false);
-    Screen.draw(43, 2, 86, 8, testBmp);
+    Screen.draw(43, 2, 85, 8, one);
     delay(2000);
     Screen.clean();
     Screen.print("Bar Count", false);
-    Screen.draw(87, 2, 127, 8, testBmp);
+    Screen.draw(86, 2, 128, 8, one);
     delay(2000);
   }
 }
