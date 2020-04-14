@@ -63,21 +63,21 @@ void loop()
   {
     Screen.draw(0,2,42,8, six);
     Screen.draw(43, 2, 85, 8, seven);
-    Screen.draw(86, 2, 128, 8, eight);
+    Screen.draw(86, 2, 128, 8, nine);
 
-    delay(2000);
+    // delay(2000);
 
-    Screen.print("Bar Count", false);
-    Screen.draw(0, 2, 42, 8, zero);
-    Screen.draw(43, 2, 85, 8, one);
-    Screen.draw(86, 2, 128, 8, two);
+    // Screen.print("Bar Count", false);
+    // Screen.draw(0, 2, 42, 8, zero);
+    // Screen.draw(43, 2, 85, 8, one);
+    // Screen.draw(86, 2, 128, 8, two);
 
-    delay(2000);
+    // delay(2000);
 
-    Screen.draw(0,2,42,8, three);
-    Screen.draw(43, 2, 85, 8, four);
-    Screen.draw(86, 2, 128, 8, five);
+    // Screen.draw(0,2,42,8, three);
+    // Screen.draw(43, 2, 85, 8, four);
+    // Screen.draw(86, 2, 128, 8, five);
 
-    delay(2000);
+    // delay(2000);
   }
 }
