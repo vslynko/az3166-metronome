@@ -61,9 +61,15 @@ void loop()
   }
   else
   {
+    Screen.draw(0,2,42,8, six);
+    Screen.draw(43, 2, 85, 8, seven);
+    Screen.draw(86, 2, 128, 8, eight);
+
+    delay(2000);
+
     Screen.print("Bar Count", false);
     Screen.draw(0, 2, 42, 8, zero);
-    Screen.draw(43, 2, 85, 8, six);
+    Screen.draw(43, 2, 85, 8, one);
     Screen.draw(86, 2, 128, 8, two);
 
     delay(2000);
