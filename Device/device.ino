@@ -61,9 +61,26 @@ void loop()
   }
   else
   {
-    Screen.draw(0,2,42,8, six);
-    Screen.draw(43, 2, 85, 8, seven);
-    Screen.draw(86, 2, 128, 8, nine);
+    // Screen.draw(0,2,42,8, six);
+    // Screen.draw(43, 2, 85, 8, seven);
+    // Screen.draw(86, 2, 128, 8, nine);
+
+    PrintFullScreen(123);
+    delay(2000);
+    PrintFullScreen(24);
+    delay(2000);
+    PrintFullScreen(5);
+    delay(2000);
+    PrintFullScreen(530);
+    delay(2000);
+    PrintFullScreen(508);
+    delay(2000);
+    PrintFullScreen(678);
+    delay(2000);
+    PrintFullScreen(1000);
+    delay(2000);
+    PrintFullScreen(999);
+    delay(2000);
 
     // delay(2000);
 
