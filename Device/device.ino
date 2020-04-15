@@ -12,7 +12,6 @@ bool showFullScreenCounter = true;
 
 volatile bool button_A_pressed = false;
 
-
 void setup()
 {
   Screen.init();
@@ -23,6 +22,10 @@ void setup()
   attachInterrupt(USER_BUTTON_A, screenSwitch, FALLING);
 
   StartFullScreenCounter();
+
+  // Enable user LED
+  // pinMode(PC_13, OUTPUT);
+  // digitalWrite(PC_13, HIGH);
 }
 
 void screenSwitch()
