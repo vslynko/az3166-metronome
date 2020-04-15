@@ -8,7 +8,10 @@ int inputValue = 0;
 int counter = 0;
 bool aboveThreshold = false;
 
-volatile unsigned char buttonAswitch = LOW;
+bool showFullScreenCounter = true;
+
+volatile bool button_A_pressed = false;
+
 
 void setup()
 {
@@ -18,16 +21,33 @@ void setup()
   Serial.begin(115200);
 
   attachInterrupt(USER_BUTTON_A, screenSwitch, FALLING);
+
+  StartFullScreenCounter();
 }
 
 void screenSwitch()
 {
+  button_A_pressed = true;
+}
+
+void StartFullScreenCounter() {
+  showFullScreenCounter = true;
   Screen.clean();
-  buttonAswitch = !buttonAswitch;
+  Screen.print("Bar Counter");
 }
 
 void loop()
 {
+  if (button_A_pressed)
+  {
+    button_A_pressed = false;
+    showFullScreenCounter = !showFullScreenCounter;
+    if (showFullScreenCounter)
+    {
+      StartFullScreenCounter();
+    }
+  }
+
   inputValue = analogRead(senserPin);
 
   if (inputValue > 600)
@@ -45,7 +65,11 @@ void loop()
     aboveThreshold = false;
   }
 
-  if (buttonAswitch)
+  if (showFullScreenCounter)
+  {
+    PrintFullScreen(counter);
+  }
+  else
   {
     Screen.print("Analog Value:", false);
 
@@ -58,11 +82,5 @@ void loop()
     char buf1[10];
     sprintf(buf1, "%d", counter);
     Screen.print(3, buf1, false);
-  }
-  else
-  {
-    Screen.print("Bar Counter");
-
-    PrintFullScreen(counter);
   }
 }
