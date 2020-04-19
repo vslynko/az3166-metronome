@@ -12,3 +12,7 @@ An analog click signal visualization and counter with MxChip IoT devkit.
 1. `F1 -> Arduino: Board Config -> Select Board: MXCHIP az3166`, upload method leave default (OpenOCD)
 1. Connect the board.
 1. In vscode `F1 -> Arduino: Upload` to build and upload the app to the board.
+
+## Click Source
+
+1. Click source [REAPER STASH CLICKS](https://stash.reaper.fm/v/429/CLICKS.zip), CLK_BAQ1/CLK_BAQ2.
