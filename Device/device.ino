@@ -6,9 +6,12 @@ static RGB_LED rgbLed;
 int senserPin = PB_0;
 int inputValue = 0;
 int counter = 0;
+
+int bigMax = 0;
+
 bool aboveThreshold = false;
 
-bool showFullScreenCounter = true;
+bool showFullScreenCounter = false;
 
 volatile bool button_A_pressed = false;
 
@@ -20,12 +23,6 @@ void setup()
   Serial.begin(115200);
 
   attachInterrupt(USER_BUTTON_A, screenSwitch, FALLING);
-
-  StartFullScreenCounter();
-
-  // Enable user LED
-  // pinMode(PC_13, OUTPUT);
-  // digitalWrite(PC_13, HIGH);
 }
 
 void screenSwitch()
@@ -33,7 +30,8 @@ void screenSwitch()
   button_A_pressed = true;
 }
 
-void StartFullScreenCounter() {
+void StartFullScreenCounter()
+{
   showFullScreenCounter = true;
   Screen.clean();
   Screen.print("Bar Counter");
@@ -52,10 +50,11 @@ void loop()
   }
 
   inputValue = analogRead(senserPin);
+  if (inputValue > bigMax) bigMax = inputValue;
 
-  if (inputValue > 600)
+  if (inputValue > 100)
   {
-    rgbLed.setColor(150, 0, 0);
+    rgbLed.setColor(100, 10, 10);
     if (!aboveThreshold)
     {
       counter++;
@@ -64,7 +63,7 @@ void loop()
   }
   else
   {
-    rgbLed.setColor(0, 0, 150);
+    rgbLed.turnOff();
     aboveThreshold = false;
   }
 
@@ -74,16 +73,14 @@ void loop()
   }
   else
   {
-    Screen.print("Analog Value:", false);
+    Screen.print("Input", false);
 
     char buf[10];
-    sprintf(buf, "%d", inputValue);
+    sprintf(buf, "Cur=%d Max=%d", inputValue, bigMax);
     Screen.print(1, buf);
 
-    Screen.print(2, "Counter:", false);
-
     char buf1[10];
-    sprintf(buf1, "%d", counter);
+    sprintf(buf1, "Bar=%d", counter);
     Screen.print(3, buf1, false);
   }
 }
